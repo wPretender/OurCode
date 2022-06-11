@@ -1,4 +1,6 @@
 #include"Victory.h"
+#include"MyMenu.h"
+#include"AudioEngine.h"
 
 Scene* Victory::createScene() {
 	Scene* MyScene = Scene::create();
@@ -35,5 +37,7 @@ bool Victory::init() {
 }
 
 void Victory::goto1(Ref* Psendeer) {
-	exit(0);
+	auto scene = MyMenu::createScene();
+	AudioEngine::stopAll();
+	Director::getInstance()->replaceScene(scene);
 }

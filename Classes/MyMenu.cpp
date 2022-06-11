@@ -13,6 +13,10 @@ Scene* MyMenu::createScene() {
 bool MyMenu::init() {
 	if (!Layer::init())
 		return false;
+	//调整屏幕大小
+	auto glview = Director::getInstance()->getOpenGLView();
+	glview->setFrameSize(1280, 720);
+
 	director = Director::getInstance();
 	visibleSize = director->getVisibleSize();//获取屏幕大小
 	origin = director->getVisibleOrigin();
@@ -20,7 +24,7 @@ bool MyMenu::init() {
 	srand(time(0));
 	auto bgSprite = Sprite::create("main.png");
 	bgSprite->setAnchorPoint(Vec2(0, 0));
-	bgSprite->setScale(visibleSize.height / bgSprite->getContentSize().height, visibleSize.width / bgSprite->getContentSize().width);
+	bgSprite->setScale(1.1,1.1);
 	bgSprite->setPosition(Vec2(0,0));
 	this->addChild(bgSprite, 0);
 
@@ -62,4 +66,9 @@ void MyMenu::wudi(Ref* Psendeer) {
 	auto glview = director->getOpenGLView();
 	glview->setFrameSize(1024, 768);
 	director->replaceScene(TransitionJumpZoom::create(3.0f, Introduction::create(1)));
+}
+
+void MyMenu::ExitGame(Ref* pSender)
+{
+	Director::getInstance()->end();
 }

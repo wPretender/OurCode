@@ -22,10 +22,12 @@ FightMenu* FightMenu::create(hero * Hero, monster * *Monster) {
 	}
 }
 
-Scene* FightMenu::createScene(hero* Hero, monster** Monster)  //架构场景
+Scene* FightMenu::createScene(hero* Hero, monster** Monster,TMXTiledMap* tmap,Vec2 next)  //架构场景
 {
 	auto scene = Scene::create();
 	auto layer = FightMenu::create(Hero, Monster);
+	layer->TMap = tmap;
+	layer->NextPos = next;
 	scene->addChild(layer);
 	return scene;
 }
@@ -108,20 +110,20 @@ bool FightMenu::init(hero* Her, monster** Monste)  //层的实现
 void FightMenu::goto1(Ref* temp)
 {
 	Hero->h_job = 0;
-	Director::getInstance()->pushScene(FightScene::createScene(Hero, Monster));
+	Director::getInstance()->pushScene(FightScene::createScene(Hero, Monster,TMap,NextPos));
 
 }
 
 void FightMenu::goto2(Ref* temp)
 {
 	Hero->h_job = 1;
-	Director::getInstance()->pushScene(FightScene::createScene(Hero, Monster));
+	Director::getInstance()->pushScene(FightScene::createScene(Hero, Monster, TMap, NextPos));
 }
 
 void FightMenu::goto3(Ref* temp)
 {
 	Hero->h_job = 2;
-	Director::getInstance()->pushScene(FightScene::createScene(Hero, Monster));
+	Director::getInstance()->pushScene(FightScene::createScene(Hero, Monster, TMap, NextPos));
 }
 
 void FightMenu::comeback(Ref* temp) {

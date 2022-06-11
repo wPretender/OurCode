@@ -24,10 +24,12 @@ FightBoss* FightBoss::create(hero* Hero, monster* Monster) {
 	}
 }
 
-Scene* FightBoss::createScene(hero* Hero, monster* Monster)  //架构场景
+Scene* FightBoss::createScene(hero* Hero, monster* Monster, TMXTiledMap* tmap, Vec2 next)  //架构场景
 {
 	auto scene = Scene::create();
 	auto layer = FightBoss::create(Hero, Monster);
+	layer->TMap = tmap;
+	layer->NextPos = next;
 	scene->addChild(layer);
 	return scene;
 }
@@ -184,6 +186,7 @@ void FightBoss::goto4(Ref* temp)
 		if (Monster->m_job == 1) {
 			auto glview = Director::getInstance()->getOpenGLView();
 			glview->setFrameSize(1024, 768);
+			TMap->getLayer("Boss")->removeTileAt(NextPos);
 			director->popToRootScene();
 		}
 		else
@@ -247,3 +250,4 @@ void FightBoss::goto5(Ref* temp)
 			director->replaceScene(Over::createScene());
 	}
 }
+

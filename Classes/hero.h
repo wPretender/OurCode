@@ -25,6 +25,7 @@ private:
 public:
 	//构造函数
 	hero();
+	hero(const hero& Hero);
 	//析构函数
 	~hero() {};
 	//初始化函数
@@ -67,6 +68,7 @@ public:
 	int NP = 0;
 	//获得对象指针
 	static hero* create();
+	static hero* create(const hero& Hero);
 	item* sword;
 	item* shield;
 };

@@ -14,13 +14,15 @@ class FightScene :public Layer
 private:
 	Director* director;
 	Size visibleSize;
+	TMXTiledMap* TMap;
+	Vec2 NextPos;
 public:
 	Label* HP0, * HP1, * HP2, * HP3, * class1, * class2, * class3, * class0;
 	MenuItemImage* button1, * button2, * button3, * button4, * button5;
 	Sprite* mySprite, * monSprite[3];
 	hero* Hero;
 	monster* Monster[3];
-	static Scene* createScene(hero* Hero,monster** Monster);//架构场景
+	static Scene* createScene(hero* Hero,monster** Monster,TMXTiledMap* tmap,Vec2 next);//架构场景
 	virtual bool init(hero* Hero, monster** Monster);  //具体实现
 	//CREATE_FUNC(FightScene); //生成项目
 	static FightScene* create(hero* Hero, monster** Monster);

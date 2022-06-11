@@ -18,6 +18,15 @@ hero* hero::create() {
 	}
 }
 
+hero* hero::create(const hero& Hero) 
+{
+	auto newHero = hero::create();
+	newHero->h_image = Hero.h_image;
+	newHero->NP = Hero.NP;
+	newHero->setProperty(Hero.h_health, Hero.h_atk, Hero.h_def, Hero.h_exp,Hero.h_level, Hero.yellow_key, Hero.orange_key);
+	return newHero;
+}
+
 hero::hero()
 {
 	log("Hero creating");

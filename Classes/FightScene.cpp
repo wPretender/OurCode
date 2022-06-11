@@ -22,10 +22,12 @@ FightScene* FightScene::create(hero * Hero, monster * *Monster) {
 	}
 }
 
-Scene* FightScene::createScene(hero* Hero,monster** Monster)  //架构场景
+Scene* FightScene::createScene(hero* Hero,monster** Monster, TMXTiledMap* tmap, Vec2 next)  //架构场景
 {
 	auto scene = Scene::create();
 	auto layer = FightScene::create(Hero, Monster);
+	layer->TMap = tmap;
+	layer->NextPos = next;
 	scene->addChild(layer);
 	return scene;
 }
@@ -236,6 +238,7 @@ void FightScene::goto1(Ref* temp)
 		//director->popToRootScene();
 		auto glview = Director::getInstance()->getOpenGLView();
 		glview->setFrameSize(1024, 768);
+		TMap->getLayer("Monster")->removeTileAt(NextPos);
 		director->popScene();
 		director->popScene();
 	}
@@ -268,6 +271,7 @@ void FightScene::goto2(Ref* temp)
 		//director->popToRootScene();
 		auto glview = Director::getInstance()->getOpenGLView();
 		glview->setFrameSize(1024, 768);
+		TMap->getLayer("Monster")->removeTileAt(NextPos);
 		director->popScene();
 		director->popScene();
 	}
@@ -299,6 +303,7 @@ void FightScene::goto3(Ref* temp)
 	if (all_death()) {
 		auto glview = Director::getInstance()->getOpenGLView();
 		glview->setFrameSize(1024, 768);
+		TMap->getLayer("Monster")->removeTileAt(NextPos);
 		director->popToRootScene();
 	}
 	go(i, 0, 2) {
@@ -357,6 +362,7 @@ void FightScene::goto4(Ref* temp)
 	if (all_death()) {
 		auto glview = Director::getInstance()->getOpenGLView();
 		glview->setFrameSize(1024, 768);
+		TMap->getLayer("Monster")->removeTileAt(NextPos);
 		director->popToRootScene();
 	}
 }
@@ -380,3 +386,4 @@ void FightScene::goto5(Ref* temp)
 		director->replaceScene(Over::createScene());
 	}
 }
+

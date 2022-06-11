@@ -5,6 +5,7 @@
 #include "FightMenu.h"
 #include "nextPage1.h"
 #include "FightBoss.h"
+#include "MyMenu.h"
 typedef void (Ref::* SEL_CallFunc)();
 typedef void (Ref::* SEL_CallFuncN)(Node*);
 typedef void (Ref::* SEL_CallFuncND)(Node*, void*);
@@ -69,7 +70,33 @@ bool GameMap::init(int id)
     if (!Scene::init()) {
         return false;
     }
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+    
+
+    auto closeItem = MenuItemImage::create(
+        "MainMenu.png",
+        "MainMenu.png",
+        CC_CALLBACK_1(GameMap::menuCallback, this));
+
+    if (closeItem == nullptr ||
+        closeItem->getContentSize().width <= 0 ||
+        closeItem->getContentSize().height <= 0)
+    {
+        log("'CloseNormal.png' and 'CloseSelected.png'");
+    }
+    else
+    {
+        float x = origin.x + visibleSize.width - closeItem->getContentSize().width / 2;
+        float y = origin.y + closeItem->getContentSize().height / 2;
+        closeItem->setPosition(Vec2(x, y));
+    }
+
+    // create menu, it's an autorelease object
+    auto menu = Menu::create(closeItem, NULL);
+    menu->setPosition(Vec2::ZERO);
+    this->addChild(menu, 1);
 
     //载入地图
     LoadMap();
@@ -177,7 +204,6 @@ bool GameMap::init(int id)
     this->schedule(CC_SCHEDULE_SELECTOR(GameMap::update), 0.1);
 
     //播放音乐
-    auto visibleSize = Director::getInstance()->getVisibleSize();	//获得屏幕大小
     audioID = AudioEngine::play2d("NEEDY GIRL OVERDOSE; Aiobahn - Angel boring (feat. Aiobahn).mp3", true, 1.0f);
     AudioEngine::setVolume(audioID, volume);
     is_playing = 1;
@@ -438,9 +464,6 @@ void GameMap::NextMove(Vec2 NextMove, EventKeyboard::KeyCode keyC)
 
     if (Item[currentMap - TMap.begin()].count(NextMove)) {
         Equip(NextMove, Item[currentMap - TMap.begin()].find(NextMove)->second->getItemtype());
-        //重新加载UI
-        removeChild(ui);
-        UI_init();
         return;
     }
 
@@ -469,6 +492,8 @@ void GameMap::NextMove(Vec2 NextMove, EventKeyboard::KeyCode keyC)
         (*currentMap)->getLayer("OrangeKey")->removeTileAt(tilecoord);
     }
     else if (det == MONSTER) {
+        //存档
+        Save(*Hero);
         //战斗系统写入
         keypress[keyC] = false;
         int mapID = currentMap - TMap.begin();//当前处于第几层
@@ -483,13 +508,16 @@ void GameMap::NextMove(Vec2 NextMove, EventKeyboard::KeyCode keyC)
         }
         auto glview = Director::getInstance()->getOpenGLView();
         glview->setFrameSize(1280, 720);
-        Director::getInstance()->pushScene(FightMenu::createScene(Hero, Monster));
+        Director::getInstance()->pushScene(FightMenu::createScene(Hero, Monster,*currentMap,tilecoord));
         //Director::getInstance()->pushScene(nextPage1::createScene(Hero));
         //glview->setFrameSize(1024, 768);
-        (*currentMap)->getLayer("Monster")->removeTileAt(tilecoord);
+       
+
         //Hero->canMove = 0;
     }
     else if (det == BOSS) {
+        //存档
+        Save(*Hero);
         //战斗系统写入
         keypress[keyC] = false;
         int mapID = currentMap - TMap.begin();//当前处于第几层
@@ -511,27 +539,24 @@ void GameMap::NextMove(Vec2 NextMove, EventKeyboard::KeyCode keyC)
         }
         auto glview = Director::getInstance()->getOpenGLView();
         glview->setFrameSize(1280, 720);
-        Director::getInstance()->pushScene(FightBoss::createScene(Hero, Monster[0]));
-        (*currentMap)->getLayer("Boss")->removeTileAt(tilecoord);
+        Director::getInstance()->pushScene(FightBoss::createScene(Hero, Monster[0],*currentMap,tilecoord));
     }
+
     else if (det == REDBOTTLES) {
-        Hero->addProperty(100 > Hero->h_health / 20 ? 100 : Hero->h_health / 20, 0, 0, 0);
+        Hero->addProperty(100 > Hero->h_health / 20 ? 100 : Hero->h_health / 10, 0, 0, 0);
         (*currentMap)->getLayer("RedBottles")->removeTileAt(tilecoord);
     }
     else if (det == BANANA) {
-        Hero->addProperty(0, 10 > Hero->h_atk / 20 ? 10 : Hero->h_atk / 20, 0, 0);
+        Hero->addProperty(0, 10 > Hero->h_atk / 20 ? 20 : Hero->h_atk / 20, 0, 0);
         (*currentMap)->getLayer("Banana")->removeTileAt(tilecoord);
     }
     else if (det == HAMBURGER) {
-        Hero->addProperty(0, 0, 10 > Hero->h_def / 20 ? 10 : Hero->h_def / 20, 0);
+        Hero->addProperty(0, 0, 10 > Hero->h_def / 20 ? 20 : Hero->h_def / 20, 0);
         (*currentMap)->getLayer("Hamburger")->removeTileAt(tilecoord);
     }
     else {
         Hero->canMove = true;
     }
-    //重新加载UI
-    removeChild(ui);
-    UI_init();
 }
 
 void GameMap::Equip(Vec2 pos, int type)
@@ -598,8 +623,6 @@ void GameMap::update(float delta)
         Hero->addProperty(1000 * Hero->h_level, 40 * Hero->h_level, 15 * Hero->h_level, 0);
         Hero->h_level++;
     }
-    removeChild(ui);
-    UI_init();
 
     auto nextKey = EventKeyboard::KeyCode::KEY_W;
     //读键
@@ -646,6 +669,13 @@ void GameMap::update(float delta)
     auto HeroPos = Hero->getSprite()->getPosition();
     auto NextPos = Vec2(HeroPos.x + offsetX, HeroPos.y + offsetY);
     NextMove(NextPos, nextKey);
+
+    //加载存档
+    if (Hero->is_death()) {
+        Hero->setProperty(SaveHero->h_health, SaveHero->h_atk, SaveHero->h_def, SaveHero->h_exp, SaveHero->h_level, SaveHero->yellow_key, SaveHero->orange_key);
+        Hero->NP = SaveHero->NP;
+    }
+
     //动作
     auto action = Animate::create(moveanimation);
     Hero->getSprite()->runAction(action);
@@ -653,4 +683,25 @@ void GameMap::update(float delta)
         auto moveto = MoveTo::create(delta, NextPos);
         Hero->move(moveto);
     }
+    //重新加载UI
+    removeChild(ui);
+    UI_init();
+}
+
+void GameMap::Save(const hero& savehero)
+{
+    if (SaveHero)
+        delete SaveHero;
+    SaveHero = hero::create(savehero);
+}
+
+void GameMap::menuCallback(Ref* pSender)
+{
+
+    auto scene = MyMenu::createScene();
+    AudioEngine::stopAll();
+    auto glview = Director::getInstance()->getOpenGLView();
+    glview->setFrameSize(1280, 720);
+    Director::getInstance()->replaceScene(scene);
+    
 }

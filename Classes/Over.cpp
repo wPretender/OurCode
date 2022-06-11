@@ -1,4 +1,6 @@
 #include"Over.h"
+#include"MyMenu.h"
+#include"AudioEngine.h"
 
 Scene* Over::createScene() {
 	Scene* MyScene = Scene::create();
@@ -34,6 +36,10 @@ bool Over::init() {
 	return true;
 }
 
-void Over::goto1(Ref* Psendeer) {
-	exit(0);
+void Over::goto1(Ref* Psendeer) 
+{
+	Director::getInstance()->popToRootScene();
+	auto glview = Director::getInstance()->getOpenGLView();
+	glview->setFrameSize(1024, 768);
+	//Director::getInstance()->popScene();
 }

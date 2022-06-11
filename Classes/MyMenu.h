@@ -13,4 +13,5 @@ public:
 	CREATE_FUNC(MyMenu);//增加一个create函数
 	void comeback(Ref* Psendeer);//回调函数
 	void wudi(Ref* Psendeer);
+	void ExitGame(Ref* pSender);
 };

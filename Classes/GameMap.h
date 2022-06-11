@@ -52,7 +52,8 @@ public:
     void changeMusic(Ref* Psendeer);
     void Equip(Vec2 pos, int type);
     static GameMap* create(int id);
-    
+    void Save(const hero& savehero);
+    void menuCallback(Ref* pSender);
     //CREATE_FUNC(GameMap);
 protected:
     GameMap() {};
@@ -68,6 +69,7 @@ protected:
     vector<bool> FirstInit;
     Label* music;
     hero* Hero;
+    hero* SaveHero = NULL;
     monster* Monster[3];
     UI* ui;
     map<EventKeyboard::KeyCode, bool> keypress;
