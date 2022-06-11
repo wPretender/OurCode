@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="map" tilewidth="32" tileheight="32">
+  <image source="D:\cocos2dx-projects\project1\Resources\map.png" width="732" height="488"/>
+ </tileset>
+ <tileset firstgid="331" name="TiledMap" tilewidth="32" tileheight="32">
+  <image source="D:\cocos2dx-projects\project1\Resources\map.png" width="530" height="398"/>
+ </tileset>
+ <layer name="块层 1" width="40" height="22">
+  <data encoding="base64" compression="zlib">
+   eJzt0UkNgEAABMEVy+GBwwOHB1hELIgARAAmaA+EZB7zqKT/nUIIKzYkwd5x4BTtCzce0Vb56L/+q9gqH/3XfxVb5aP/+u/XzpCjQCn4t0KNBq3g3w49BoyCfyfMiFgE//7RL5uq0Ck=
+  </data>
+ </layer>
+ <layer name="块层 2" width="40" height="22">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAB4MA3AAAE=
+  </data>
+ </layer>
+ <imagelayer name="图像图层 1" x="1" y="1"/>
+</map>

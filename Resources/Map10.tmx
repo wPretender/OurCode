@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="13" height="13" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Wall" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Characters/Event01-Wall01.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="Key" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Characters/Event01-Door07.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="33" name="Monster" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Battlers/Monster01-12_3_1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="34" name="Banana" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Item01-06_4_1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="35" name="Hamburger" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Item03-06_3_4.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="36" name="RedBottles" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Item01-02_1_1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="37" name="Monster08-03_1_1" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Battlers/Monster08-03_1_1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="38" name="Downstair" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Downstair.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="39" name="Upstair" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Upstair.png" width="32" height="32"/>
+ </tileset>
+ <layer name="Background" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjZmBgYB7Fo3gQYwCkHgH8
+  </data>
+ </layer>
+ <layer name="Wall" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYCIDkwKIMYMUNehsbPJDwW201oNNHTHyyDQDDnFsenABdD2kYgD1ZAC5
+  </data>
+ </layer>
+ <layer name="OrangeLock" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFwxEIotGkyg8mAAAzhABF
+  </data>
+ </layer>
+ <layer name="YellowLock" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFIwUID7QDyAQAEEwAFA==
+  </data>
+ </layer>
+ <layer name="Monster" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgx0oUihPL4DuDmq5CwBVJACF
+  </data>
+ </layer>
+ <layer name="Hamburger" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFlALlgXbAMAcAMsQAJA==
+  </data>
+ </layer>
+ <layer name="Banana" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFlAClgXbACAAAMewAIw==
+  </data>
+ </layer>
+ <layer name="RedBottles" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4D2QIUCvQALFAAl
+  </data>
+ </layer>
+ <layer name="Boss" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgZQHWgHTAKyAYAQtAAJg==
+  </data>
+ </layer>
+ <objectgroup name="Object">
+  <object name="Downstair" x="48" y="368"/>
+  <object name="HeroEnter" x="48" y="336"/>
+  <object name="Upstiar" x="208" y="48"/>
+  <object name="Shield" x="336" y="240">
+   <properties>
+    <property name="ATK" value="0"/>
+    <property name="Address" value="Pan.png"/>
+    <property name="DEF" value="100"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Upstair" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAeUKeiWaNgFMAAAF4MACg=
+  </data>
+ </layer>
+ <layer name="DownStair" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4B8oEYHOwARfAAn
+  </data>
+ </layer>
+</map>

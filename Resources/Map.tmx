@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="10" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Wall&amp;Path" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Characters/Event01-Wall01.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="Door&amp;Key" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Characters/Event01-Door07.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="33" name="Skull" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Battlers/Monster02-02_1_1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="34" name="Slime" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Characters/Actor02-Monster02.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="50" name="Boss" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Characters/Actor02-Monster08.png" width="128" height="128"/>
+ </tileset>
+ <layer name="Background" width="30" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjZmBgYB7Fo3gUj+IhgAFJkAOF
+  </data>
+ </layer>
+ <layer name="Wall" width="30" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYBogjA3gEidWnpDewWgvepgQE07E2jsQgFJ308JeWofzYExXtLaXnuUEjA0A2LcAxQ==
+  </data>
+ </layer>
+ <layer name="YellowKey" width="30" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjGQgg4QHOwAAO9AAVQ==
+  </data>
+ </layer>
+ <layer name="OrangeKey" width="30" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBi6QAQJj4JRMAqGPwAA8PAAPQ==
+  </data>
+ </layer>
+ <layer name="YellowLock" width="30" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgwkID7QDRsEoGMQAAEAQABQ=
+  </data>
+ </layer>
+ <layer name="OrangeLock" width="30" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2DkAcGBdsAoIAsAACHoABI=
+  </data>
+ </layer>
+ <layer name="Skull" width="30" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBjcQBEJj4JRMApGNgAAlWMAZA==
+  </data>
+ </layer>
+ <layer name="Boss" width="30" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKhAQAEsAAB
+  </data>
+ </layer>
+ <layer name="Slime" width="30" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDEeghISpAYyoZA4lAABxWACZ
+  </data>
+ </layer>
+ <objectgroup name="Object">
+  <object name="Hero" gid="62" x="16" y="144" visible="0"/>
+ </objectgroup>
+</map>

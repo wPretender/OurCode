@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="13" height="13" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Downstair" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Downstair.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="2" name="Upstair" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Upstair.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="3" name="RedBottles" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Item01-02_1_1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="4" name="Hamburger" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Item03-06_3_4.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="5" name="Banana" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Icons/Item01-06_4_1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="6" name="Wall" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Characters/Event01-Wall01.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="22" name="Key" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Characters/Event01-Door07.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="38" name="Monster" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Battlers/Monster01-12_3_1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="39" name="Boss" tilewidth="32" tileheight="32">
+  <image source="魔塔吧优质标准化大素材库/Battlers/Monster08-02_4_1.png" width="32" height="32"/>
+ </tileset>
+ <layer name="Background" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzjYGBg4BjFo3gQYwAGrQVJ
+  </data>
+ </layer>
+ <layer name="Wall" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjZ2BgYCcDIwNi+PjECMmTag+6ucTyiQX43EtKuBFrD7H+wOU2ZPOw8emth1QMACulAls=
+  </data>
+ </layer>
+ <layer name="OrangeLock" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBieQIwCeUJ6BxKgu20wu5VaAACZ5ABv
+  </data>
+ </layer>
+ <layer name="YellowLock" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgZQGKgHTAKyAYALEQAGQ==
+  </data>
+ </layer>
+ <objectgroup name="Object">
+  <object name="Downstair" x="368" y="368"/>
+  <object name="Upstair" x="176" y="48"/>
+  <object name="HeroEnter" x="368" y="336"/>
+  <object name="HeroExit" x="208" y="48"/>
+  <object name="Sword" x="240" y="48">
+   <properties>
+    <property name="ATK" value="50"/>
+    <property name="Address" value="SkySword.png"/>
+    <property name="DEF" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Monster" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFMKBGphy17aI2QLeLnnZTAwAA2sQAvw==
+  </data>
+ </layer>
+ <layer name="OrangeKey" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYKA/kCRRfBTQD0giYVrqIQUAALLQAMk=
+  </data>
+ </layer>
+ <layer name="YellowKey" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAfKFKgdxSMAmIBAFIMACI=
+  </data>
+ </layer>
+ <layer name="RedBottles" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAfYKajXaOA+mCg4g8ACrQABw==
+  </data>
+ </layer>
+ <layer name="Downstair" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4D2gJECvQAC4AAC
+  </data>
+ </layer>
+ <layer name="Upstair" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAOYKKSOaNgFKADAAdcAAM=
+  </data>
+ </layer>
+ <layer name="Banana" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4A2gJVK5gAABAwABg==
+  </data>
+ </layer>
+ <layer name="Hamburger" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAdYKGh2aOAfmCg4xEADcQACQ==
+  </data>
+ </layer>
+ <layer name="Boss" width="13" height="13">
+  <data encoding="base64" compression="zlib">
+   eJxjYBh6QH2gHTAK6AoATjQAKA==
+  </data>
+ </layer>
+</map>
